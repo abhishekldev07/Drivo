@@ -1,0 +1,1 @@
+Screenshot assets are maintained as JPEG galleries for GitHub rendering compatibility.
