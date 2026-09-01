@@ -18,12 +18,12 @@
 
 Drivo is a single Flutter application with two fixed account experiences:
 
-- **Passenger portal** — request rides, choose vehicle category and payment method, track the assigned driver, view ride history, and rate completed trips.
-- **Driver portal** — complete verification onboarding, wait for approval, go online, receive and respond to ride requests, run the trip lifecycle, review earnings/history, manage documents and payment QR, and view passenger ratings.
+- **Passenger portal** — request rides, choose a vehicle category and payment method, track the assigned Driver, review trip history, and rate completed rides.
+- **Driver portal** — complete verification onboarding, wait for approval, go online, receive ride requests, manage the trip lifecycle, review earnings and history, manage documents/payment QR, and view Passenger feedback.
 
-The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Realtime subscriptions, private Storage buckets, database RPCs and Edge Functions.
+The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime subscriptions, private Storage buckets, database RPCs and Edge Functions.
 
-> **Authentication note:** this portfolio build uses a 10-digit phone number as the user-facing identity without SMS/OTP verification. A production release should replace this with verified phone authentication or another secure identity provider.
+> **Authentication note:** this portfolio build uses a unique 10-digit phone number as the user-facing identity without SMS/OTP verification. A production release should replace this with verified phone authentication or another secure identity provider.
 
 ## App screenshots
 
@@ -32,7 +32,7 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 **Screens shown:** Phone sign-in • Account type selection • Passenger registration • Driver registration — license step • Driver application under review
 
 <p align="center">
-  <img src="docs/screenshots/onboarding-and-registration.webp" alt="Drivo phone sign-in, account type selection, Passenger registration, Driver registration and application review" width="900" />
+  <img src="docs/screenshots/onboarding-gallery.jpg" alt="Drivo onboarding and account registration screens" width="900" />
 </p>
 
 ### Passenger flow
@@ -40,7 +40,7 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 **Screens shown:** Destination map • Ride & payment selection • Assigned Driver / Driver arrived • Trip complete • Driver rating • Passenger trip history
 
 <p align="center">
-  <img src="docs/screenshots/passenger-experience.webp" alt="Drivo Passenger destination map, ride selection, assigned Driver tracking, trip completion, rating and trip history" width="900" />
+  <img src="docs/screenshots/passenger-gallery.jpg" alt="Drivo Passenger destination, booking, tracking, trip completion, rating and history screens" width="900" />
 </p>
 
 ### Driver flow
@@ -48,7 +48,7 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 **Screens shown:** Incoming ride request • Driver earnings • Driver trip history • Ratings & feedback • Verified Driver profile
 
 <p align="center">
-  <img src="docs/screenshots/driver-experience.webp" alt="Drivo Driver incoming ride request, earnings, trip history, ratings and verified Driver profile" width="900" />
+  <img src="docs/screenshots/driver-gallery.jpg" alt="Drivo Driver request, earnings, trip history, ratings and profile screens" width="900" />
 </p>
 
 ### Screen inventory
@@ -83,15 +83,15 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 - Place search through a Supabase Edge Function
 - Manual destination pinning
 - OSRM route calculation
-- Vehicle categories: Drivo Bike, Mini, Car and XL
+- Drivo Bike, Mini, Car and XL categories
 - Server-calculated fares in NPR
 - Cash and Online QR payment selection
-- Realtime Driver assignment and ride status updates
+- Realtime Driver assignment and ride-status updates
 - Live Driver marker tracking while the Driver app is active
-- Driver name, phone and vehicle information during the ride
-- Ride history with pickup, destination, date/time, fare, distance, Driver details and payment state
-- One rating per completed, paid ride
-- Optional written rating feedback
+- Driver name, phone and vehicle details during the ride
+- Detailed ride history with route, fare, distance and payment state
+- One 1–5 star rating per completed, paid ride
+- Optional written Driver feedback
 - Passenger profile statistics
 - Logout with confirmation
 
@@ -99,29 +99,25 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 
 - Fixed Driver account type
 - Multi-step Driver registration
-- Personal identity and contact details
-- Driver photo
-- Date of birth and address
-- Driving-license details and images
-- Vehicle category selection
-- Vehicle make/model/year/color/plate
+- Personal details, Driver photo, date of birth and address
+- Driving-license information and document images
+- Vehicle category, make, model, year, color and plate
 - Registration, insurance and vehicle photos
 - Private document storage
 - Application states: pending / approved / rejected
-- Manual approval through Supabase Dashboard
+- Approval required before going online
 - Online/offline Driver presence
 - Realtime GPS publishing while online
 - Category-aware nearby dispatch
-- Incoming ride request UI with Passenger name and phone
+- Incoming requests with Passenger name and phone
 - Accept/reject workflow
 - Trip lifecycle: arriving → arrived → in progress → completed
 - Cash and QR payment states
 - Driver payment QR upload
-- Earnings dashboard
-- 10% Drivo service-fee calculation
-- Trip history with fare/fee/net earning breakdown
-- Driver profile and verification documents
-- Real average rating and rating count calculated from completed rides
+- Earnings dashboard with Drivo service-fee calculation
+- Detailed Driver trip history
+- Verification documents in Driver profile
+- Real average rating and rating count derived from rides
 - Passenger feedback history
 - Logout with confirmation
 
@@ -129,41 +125,35 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 
 ```mermaid
 flowchart TD
-    A[Flutter Drivo App] --> B[Passenger Portal]
-    A --> C[Driver Portal]
-
-    B --> D[Supabase Auth]
+    A["Flutter Drivo App"] --> B["Passenger Portal"]
+    A --> C["Driver Portal"]
+    B --> D["Supabase Auth"]
     C --> D
-
-    B --> E[Postgres + PostGIS]
+    B --> E["Postgres and PostGIS"]
     C --> E
-
-    B --> F[Supabase Realtime]
+    B --> F["Supabase Realtime"]
     C --> F
-
-    C --> G[Private Supabase Storage]
-
-    B --> H[places-search Edge Function]
-    B --> I[route Edge Function]
-
-    H --> J[Nominatim / OpenStreetMap]
-    I --> K[OSRM]
+    C --> G["Private Supabase Storage"]
+    B --> H["places-search Edge Function"]
+    B --> I["route Edge Function"]
+    H --> J["Nominatim / OpenStreetMap"]
+    I --> K["OSRM"]
 ```
 
 ## Repository structure
 
 ```text
 Drivo/
-├── flutter/                 # Primary Flutter app (Passenger + Driver portals)
+├── flutter/                 # Primary Flutter app: Passenger + Driver portals
 │   ├── lib/main.dart
 │   ├── assets/
 │   ├── android/
 │   └── ios/
 ├── supabase/
-│   ├── migrations/          # Database schema, RLS, RPCs, ratings and dispatch
+│   ├── migrations/          # Schema, RLS, RPCs, ratings and dispatch
 │   ├── functions/
-│   │   ├── places-search/   # Nominatim place search proxy
-│   │   └── route/           # OSRM route proxy
+│   │   ├── places-search/   # Nominatim place-search proxy
+│   │   └── route/           # OSRM routing proxy
 │   ├── config.toml
 │   └── seed.sql
 ├── scripts/dart/            # Development utilities
@@ -185,24 +175,24 @@ Important backend concepts include:
 
 ### Business rules enforced on the backend
 
-The Flutter UI is not trusted for authorization. Database policies/RPCs enforce rules such as:
+The Flutter UI is not trusted for authorization. Database policies and RPCs enforce rules such as:
 
-- Passenger accounts cannot act as Drivers.
+- Passenger accounts cannot perform Driver operations.
 - Driver accounts cannot request Passenger rides.
 - A Driver must be approved before going online.
-- Dispatch only considers approved, online, available Drivers in the requested category.
+- Dispatch only considers approved, online and available Drivers in the requested category.
 - QR rides require a Driver payment QR.
-- Only the Passenger who completed and paid for a ride can rate that Driver.
+- Only the Passenger from a completed, paid ride can rate that Driver.
 - A ride can be rated only once.
-- Driver average ratings are derived from completed-ride ratings.
+- Driver averages are derived from actual ride ratings.
 
 ## Maps, routing and location
 
 Drivo uses:
 
 - **Map tiles:** OpenStreetMap via `flutter_map`
-- **Place search:** Nominatim through `places-search`
-- **Routing:** OSRM through `route`
+- **Place search:** Nominatim through the `places-search` Edge Function
+- **Routing:** OSRM through the `route` Edge Function
 - **Spatial queries:** PostGIS
 - **Device GPS:** `geolocator`
 
@@ -210,20 +200,20 @@ While a Driver is online and the app is active, location updates are written to 
 
 ### Known location limitation
 
-Production-grade background location tracking is not yet implemented. If the Driver app is killed or heavily background-restricted by the OS, continuous tracking is not guaranteed. Smooth marker interpolation is also a future polish item.
+Production-grade background Driver location tracking is not yet implemented. If the Driver app is killed or heavily background-restricted by the OS, continuous tracking is not guaranteed. Smooth marker interpolation is also future work.
 
 ## Payments
 
-Drivo currently supports two demo payment paths:
+Drivo currently supports two portfolio payment paths:
 
 - **Cash** — marked paid when the Driver completes the trip.
 - **Online QR** — the Driver uploads a QR image; the Passenger can use it after the trip and confirms payment in Drivo.
 
-This is a workflow simulation, not a real payment-gateway integration. No banking credentials or payment-provider secrets are stored by the project.
+This is a workflow simulation rather than a payment-gateway integration. No banking credentials or payment-provider secrets are stored by the project.
 
 ## Driver ratings
 
-Driver ratings are tied to individual rides. A rating is accepted only when:
+Driver ratings are linked to individual rides. A rating is accepted only when:
 
 1. the caller is the ride's Passenger,
 2. the ride is completed,
@@ -231,7 +221,7 @@ Driver ratings are tied to individual rides. A rating is accepted only when:
 4. the ride has not already been rated,
 5. the rating is between 1 and 5 stars.
 
-The Driver's displayed average and rating count are recalculated from actual rated trips.
+The Driver's displayed average and rating count are recalculated from rated trips.
 
 ## Requirements
 
@@ -239,7 +229,7 @@ The Driver's displayed average and rating count are recalculated from actual rat
 - Android Studio / Android SDK for Android development
 - Xcode for iOS development
 - A Supabase project for backend hosting
-- Supabase CLI if running the backend locally
+- Supabase CLI for local backend development
 
 ## Run the Flutter app
 
@@ -259,7 +249,7 @@ flutter run \
   --dart-define=SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
 ```
 
-Never place a Supabase service-role key or other server secret inside the Flutter app.
+Never put a Supabase service-role key or another server secret inside the Flutter app.
 
 ## Supabase development
 
@@ -275,11 +265,11 @@ The migrations under `supabase/migrations/` define the backend schema and securi
 ## Driver approval workflow
 
 1. Register a Driver account in the app.
-2. Complete the requested Driver, vehicle and document information.
+2. Complete the requested personal, vehicle and document information.
 3. Open Supabase Dashboard.
 4. Review the row in `driver_applications` and the private Storage documents.
 5. Set the application status to `approved` or `rejected`.
-6. Approved Drivers receive access to the Driver portal.
+6. Approved Drivers receive access to the operational Driver portal.
 
 ## Security notes
 
@@ -292,7 +282,7 @@ The migrations under `supabase/migrations/` define the backend schema and securi
 
 ### Important authentication limitation
 
-The current phone-only sign-in/handoff mechanism does not verify possession of the entered number. Before any real launch, replace it with verified OTP/authentication and review the account-handoff flow accordingly.
+The current phone-only sign-in/handoff mechanism does not verify possession of the entered number. Before a real launch, replace it with verified authentication and review the account-handoff flow accordingly.
 
 ## Testing checklist
 
@@ -304,7 +294,7 @@ flutter analyze
 flutter test
 ```
 
-Recommended manual checks include Passenger and Driver registration, duplicate-phone protection, Driver approval, online/offline presence, category matching, request accept/reject, live location movement, the complete trip lifecycle, Cash/QR payments, ride history, Driver earnings and ratings.
+Recommended manual checks include Passenger and Driver registration, duplicate-phone protection, Driver approval, online/offline presence, category matching, accept/reject, realtime location movement, full trip lifecycle, Cash/QR payments, trip history, Driver earnings and ratings.
 
 ## GitHub hygiene
 
@@ -321,20 +311,20 @@ Do not commit:
 - Supabase `.temp/` or `.branches/`
 - signing keys / keystores
 - service-role or secret keys
-- build output (`build/`, APK/AAB/IPA files)
+- build output such as `build/`, APK, AAB or IPA files
 
 `pubspec.lock` should remain committed for reproducible application builds.
 
 ## Roadmap
 
-- verified phone authentication / OTP
+- verified phone authentication / OTP for a production release
 - background Driver location service
-- push notifications for ride offers/status changes
+- push notifications for ride offers and status changes
 - smooth car-marker interpolation
-- real payment gateway integration
+- real payment-gateway integration
 - dedicated admin/operations dashboard
-- real government/document verification integrations
-- Passenger-to-Driver support/chat flows
+- government/document verification integrations
+- Passenger/Driver support or chat flows
 - automated integration tests and CI
 - Play Store / App Store deployment hardening
 
