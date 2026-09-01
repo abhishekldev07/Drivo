@@ -213,7 +213,7 @@ The Driver's displayed average and rating count are recalculated from actual rat
 ## Run the Flutter app
 
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/abhishekldev07/Drivo>
 cd Drivo/flutter
 flutter pub get
 flutter analyze
