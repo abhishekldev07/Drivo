@@ -25,6 +25,32 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 
 > **Portfolio authentication note:** this project intentionally uses a 10-digit phone number as the user-facing identity without SMS/OTP verification. That keeps the demo fast and inexpensive, but it is **not suitable as production authentication**. A real release should replace the phone-handoff flow with verified phone authentication or another secure identity provider.
 
+## App screenshots
+
+### Onboarding & registration
+
+Phone sign-in, account-type selection, Passenger registration, Driver registration, and Driver application review.
+
+<p align="center">
+  <img src="docs/screenshots/onboarding-and-registration.webp" alt="Drivo onboarding and registration screens" width="900" />
+</p>
+
+### Passenger experience
+
+Destination selection, ride and payment selection, live Driver tracking, trip completion, Driver rating, and Passenger trip history.
+
+<p align="center">
+  <img src="docs/screenshots/passenger-experience.webp" alt="Drivo Passenger booking, tracking, payment, rating and trip-history screens" width="900" />
+</p>
+
+### Driver experience
+
+Incoming ride requests, completed-trip history, earnings, ratings and feedback, and the verified Driver profile.
+
+<p align="center">
+  <img src="docs/screenshots/driver-experience.webp" alt="Drivo Driver requests, trips, earnings, ratings and profile screens" width="900" />
+</p>
+
 ## Current feature set
 
 ### Passenger
@@ -213,7 +239,7 @@ The Driver's displayed average and rating count are recalculated from actual rat
 ## Run the Flutter app
 
 ```bash
-git clone <https://github.com/abhishekldev07/Drivo>
+git clone https://github.com/abhishekldev07/Drivo.git
 cd Drivo/flutter
 flutter pub get
 flutter analyze
