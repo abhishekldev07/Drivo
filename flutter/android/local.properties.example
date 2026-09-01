@@ -1,0 +1,5 @@
+# Flutter normally creates android/local.properties automatically.
+# Keep your existing flutter.sdk line, for example:
+# flutter.sdk=C:\\src\\flutter
+#
+# No Google Maps API key is required by this project.

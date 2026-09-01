@@ -1,0 +1,96 @@
+# -----------------------------------------------------------------------------
+# Drivo repository ignore rules
+# -----------------------------------------------------------------------------
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Logs / temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+coverage/
+
+# Environment / credentials
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.p12
+*.jks
+*.keystore
+key.properties
+
+# Dart / Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+**/build/
+.flutter_tool_state
+
+# Flutter platform-local files
+flutter/android/local.properties
+flutter/android/.gradle/
+flutter/android/captures/
+flutter/android/app/debug/
+flutter/android/app/profile/
+flutter/android/app/release/
+flutter/ios/Pods/
+flutter/ios/.symlinks/
+flutter/ios/Flutter/ephemeral/
+flutter/ios/Flutter/Generated.xcconfig
+flutter/ios/Flutter/flutter_export_environment.sh
+flutter/ios/Runner.xcworkspace/xcuserdata/
+flutter/ios/Runner.xcodeproj/xcuserdata/
+flutter/macos/Flutter/ephemeral/
+
+# Native Android experimental client
+android/local.properties
+android/.gradle/
+android/**/build/
+android/.idea/
+
+# Xcode / Apple local state
+**/xcuserdata/
+**/*.xcuserstate
+**/DerivedData/
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
+supabase/.cache/
+supabase/functions/**/.env
+!supabase/functions/**/.env.example
+
+# Tool / generated caches
+node_modules/
+.npm/
+.yarn/
+.pnpm-store/
+
+# Local archives / exports
+*.apk
+*.aab
+*.ipa
+*.zip
+*.tar
+*.tar.gz
