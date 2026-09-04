@@ -137,6 +137,11 @@ String drivoFriendlyError(
       raw.contains('valid current location is required')) {
     return 'Turn on location services and try again.';
   }
+  if (raw.contains('enter a valid vehicle year') ||
+      raw.contains('invalid vehicle year')) {
+    final maxYear = DateTime.now().year + 1;
+    return 'Enter a vehicle model year between 1990 and $maxYear.';
+  }
   if (raw.contains('invalid vehicle category') ||
       raw.contains('vehicle categories')) {
     return 'Ride options are unavailable right now. Please try again.';
@@ -3943,7 +3948,21 @@ class _DriverApplicationStatusScreenState
             )
           else
             OutlinedButton.icon(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () async {
+                try {
+                  await widget.onLogout();
+                } catch (error) {
+                  if (!context.mounted) return;
+                  showDrivoMessage(
+                    context,
+                    drivoFriendlyError(
+                      error,
+                      fallback: 'Couldn’t return to Drivo. Please try again.',
+                    ),
+                    isError: true,
+                  );
+                }
+              },
               icon: const Icon(Icons.arrow_back),
               label: const Text('Back to Drivo'),
             ),
@@ -5462,10 +5481,15 @@ class _DrivoDriverRegistrationScreenState extends State<DrivoDriverRegistrationS
       }
     } else if (step == 2) {
       final year = int.tryParse(_yearController.text.trim());
+      final maxYear = DateTime.now().year + 1;
       if (_categoryId == null || _makeController.text.trim().length < 2 || _modelController.text.trim().length < 2 ||
-          year == null || _colorController.text.trim().length < 2 || _plateController.text.trim().length < 3 ||
+          _colorController.text.trim().length < 2 || _plateController.text.trim().length < 3 ||
           _docs['vehicle_front'] == null || _docs['vehicle_rear'] == null || _docs['vehicle_side'] == null) {
         _message('Complete all vehicle details and vehicle photos.');
+        return false;
+      }
+      if (year == null || year < 1990 || year > maxYear) {
+        _message('Enter a vehicle model year between 1990 and $maxYear.');
         return false;
       }
     } else if (step == 3) {
@@ -5667,7 +5691,16 @@ class _DrivoDriverRegistrationScreenState extends State<DrivoDriverRegistrationS
                       const SizedBox(height: 10),
                       TextField(controller: _modelController, decoration: const InputDecoration(labelText: 'Vehicle model', hintText: 'e.g. Swift')),
                       const SizedBox(height: 10),
-                      TextField(controller: _yearController, keyboardType: TextInputType.number, inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(4)], decoration: const InputDecoration(labelText: 'Model year')),
+                      TextField(
+                        controller: _yearController,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(4)],
+                        decoration: InputDecoration(
+                          labelText: 'Model year',
+                          hintText: 'e.g. ${DateTime.now().year - 2}',
+                          helperText: '1990–${DateTime.now().year + 1}',
+                        ),
+                      ),
                       const SizedBox(height: 10),
                       TextField(controller: _colorController, decoration: const InputDecoration(labelText: 'Vehicle color')),
                       const SizedBox(height: 10),

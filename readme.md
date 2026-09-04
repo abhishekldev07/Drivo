@@ -5,11 +5,11 @@
 <h1 align="center">Drivo</h1>
 
 <p align="center">
-  A full-stack ride-hailing portfolio application built with Flutter, Supabase, PostGIS, OpenStreetMap and OSRM.
+  A full-stack ride-hailing application built with Flutter, Supabase, PostGIS, OpenStreetMap and OSRM.
 </p>
 
 <p align="center">
-  <strong>Passenger booking • Driver onboarding • Realtime dispatch • Live tracking • QR/cash payments • Earnings • Ratings</strong>
+  <strong>Passenger booking • Driver onboarding • Realtime dispatch • Live tracking • Cash/QR payments • Earnings • Ratings</strong>
 </p>
 
 ---
@@ -18,12 +18,83 @@
 
 Drivo is a single Flutter application with two fixed account experiences:
 
-- **Passenger portal** — request rides, choose vehicle category and payment method, track the assigned driver, view ride history, and rate completed trips.
-- **Driver portal** — complete verification onboarding, wait for approval, go online, receive and respond to ride requests, run the trip lifecycle, review earnings/history, manage documents and payment QR, and view passenger ratings.
+- **Passenger portal** — request rides, choose a vehicle category and payment method, track the assigned Driver, review trip history, and rate completed rides.
+- **Driver portal** — complete verification onboarding, wait for approval, go online, receive ride requests, manage the trip lifecycle, review earnings and history, manage documents/payment QR, and view Passenger feedback.
 
-The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Realtime subscriptions, private Storage buckets, database RPCs and Edge Functions.
+The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime subscriptions, private Storage buckets, database RPCs and Edge Functions.
 
-> **Portfolio authentication note:** this project intentionally uses a 10-digit phone number as the user-facing identity without SMS/OTP verification. That keeps the demo fast and inexpensive, but it is **not suitable as production authentication**. A real release should replace the phone-handoff flow with verified phone authentication or another secure identity provider.
+> **Authentication note:** this portfolio build uses a unique 10-digit phone number as the user-facing identity without SMS/OTP verification. A production release should replace this with verified phone authentication or another secure identity provider.
+
+## App screenshots
+
+### Onboarding & account registration
+
+<details>
+<summary>Screenshots</summary>
+<br/>
+<img  alt="App opening" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/open app.jpg" />
+    <br/><br/>
+    <img  alt="Choose driver or passenger" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/choose.jpg" />
+    <br/><br/>
+    <img  alt="Pasenger registering" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/passenger registration.jpg" />
+    <br/><br/>
+    <img  alt="Driver registering" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/driver registration.jpg" />
+    <br/><br/>
+    <img  alt="Driver's application" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/driver application.jpg" />
+
+</details>
+
+### Passenger flow
+
+<details>
+<summary>Screenshots</summary>
+<br/>
+<img  alt="Passenger destination" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/passenger destination.jpg" />
+    <br/><br/>
+    <img  alt="Passenger choosing ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/choose ride.jpg" />
+    <br/><br/>
+    <img  alt="Driver fixed" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/found driver.jpg" />
+    <br/><br/>
+    <img  alt="Trip completed" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/trip complete.jpg" />
+    <br/><br/>
+    <img  alt="Rate ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/rate ride.jpg" />
+    <br/><br/>
+    <img  alt="Rate ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/passenger profile.jpg" />
+
+</details>
+
+### Driver flow
+
+<img  alt="Passenger request accept/cancel" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver accept.jpg" />
+    <br/><br/>
+    <img  alt="Driver trip" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver trip.jpg" />
+    <br/><br/>
+    <img  alt="Driver earnings" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver earnings.jpg" />
+    <br/><br/>
+    <img  alt="Driver's feedback" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver feedback.jpg" />
+    <br/><br/>
+    <img  alt="Driver's profile" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver profile.jpg" />
+
+### Screen inventory
+
+| Area | Screen |
+| --- | --- |
+| Account | Phone sign-in |
+| Account | Account type selection |
+| Passenger | Passenger registration |
+| Passenger | Destination map |
+| Passenger | Ride & payment selection |
+| Passenger | Assigned Driver / Driver arrived |
+| Passenger | Trip complete |
+| Passenger | Driver rating |
+| Passenger | Passenger trip history |
+| Driver | Driver registration — license step |
+| Driver | Driver application under review |
+| Driver | Incoming ride request |
+| Driver | Driver earnings |
+| Driver | Driver trip history |
+| Driver | Ratings & feedback |
+| Driver | Verified Driver profile |
 
 ## Current feature set
 
@@ -36,25 +107,15 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 - Place search through a Supabase Edge Function
 - Manual destination pinning
 - OSRM route calculation
-- Vehicle categories:
-  - Drivo Bike
-  - Drivo Mini
-  - Drivo Car
-  - Drivo XL
+- Drivo Bike, Mini, Car and XL categories
 - Server-calculated fares in NPR
 - Cash and Online QR payment selection
-- Realtime driver assignment and ride status updates
-- Live driver marker tracking while the Driver app is active
-- Driver information during the ride
-- Polished ride history with:
-  - pickup and destination
-  - date/time
-  - fare and distance
-  - driver name, phone and vehicle
-  - payment method/status
-  - rating status
-- One rating per completed, paid ride
-- Optional written rating feedback
+- Realtime Driver assignment and ride-status updates
+- Live Driver marker tracking while the Driver app is active
+- Driver name, phone and vehicle details during the ride
+- Detailed ride history with route, fare, distance and payment state
+- One 1–5 star rating per completed, paid ride
+- Optional written Driver feedback
 - Passenger profile statistics
 - Logout with confirmation
 
@@ -62,33 +123,25 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 
 - Fixed Driver account type
 - Multi-step Driver registration
-- Personal information and 10-digit phone identity
-- Driver photo
-- Date of birth and address
-- Driving-license details and images
-- Vehicle category selection
-- Vehicle make/model/year/color/plate
+- Personal details, Driver photo, date of birth and address
+- Driving-license information and document images
+- Vehicle category, make, model, year, color and plate
 - Registration, insurance and vehicle photos
 - Private document storage
 - Application states: pending / approved / rejected
-- Manual approval through Supabase Dashboard
-- Driver dashboard with online/offline presence
+- Approval required before going online
+- Online/offline Driver presence
 - Realtime GPS publishing while online
 - Category-aware nearby dispatch
-- Incoming request UI with Passenger name and phone
+- Incoming requests with Passenger name and phone
 - Accept/reject workflow
-- Trip lifecycle:
-  - driver arriving
-  - driver arrived
-  - trip in progress
-  - completed
+- Trip lifecycle: arriving → arrived → in progress → completed
 - Cash and QR payment states
 - Driver payment QR upload
-- Earnings dashboard
-- 10% Drivo service-fee calculation
-- Trip history with fare/fee/net earning breakdown
-- Driver profile and verification documents
-- Real average rating and rating count calculated from completed rides
+- Earnings dashboard with Drivo service-fee calculation
+- Detailed Driver trip history
+- Verification documents in Driver profile
+- Real average rating and rating count derived from rides
 - Passenger feedback history
 - Logout with confirmation
 
@@ -96,41 +149,35 @@ The backend is powered by Supabase with Postgres/PostGIS, Row Level Security, Re
 
 ```mermaid
 flowchart TD
-    A[Flutter Drivo App] --> B[Passenger Portal]
-    A --> C[Driver Portal]
-
-    B --> D[Supabase Auth\nAnonymous session for portfolio]
+    A["Flutter Drivo App"] --> B["Passenger Portal"]
+    A --> C["Driver Portal"]
+    B --> D["Supabase Auth"]
     C --> D
-
-    B --> E[Postgres + PostGIS]
+    B --> E["Postgres and PostGIS"]
     C --> E
-
-    B --> F[Supabase Realtime]
+    B --> F["Supabase Realtime"]
     C --> F
-
-    C --> G[Private Supabase Storage]
-
-    B --> H[places-search Edge Function]
-    B --> I[route Edge Function]
-
-    H --> J[Nominatim / OpenStreetMap]
-    I --> K[OSRM]
+    C --> G["Private Supabase Storage"]
+    B --> H["places-search Edge Function"]
+    B --> I["route Edge Function"]
+    H --> J["Nominatim / OpenStreetMap"]
+    I --> K["OSRM"]
 ```
 
 ## Repository structure
 
 ```text
 Drivo/
-├── flutter/                 # Primary Flutter app (Passenger + Driver portals)
+├── flutter/                 # Primary Flutter app: Passenger + Driver portals
 │   ├── lib/main.dart
 │   ├── assets/
 │   ├── android/
 │   └── ios/
 ├── supabase/
-│   ├── migrations/          # Database schema, RLS, RPCs, ratings, dispatch
+│   ├── migrations/          # Schema, RLS, RPCs, ratings and dispatch
 │   ├── functions/
-│   │   ├── places-search/   # Nominatim place search proxy
-│   │   └── route/           # OSRM route proxy
+│   │   ├── places-search/   # Nominatim place-search proxy
+│   │   └── route/           # OSRM routing proxy
 │   ├── config.toml
 │   └── seed.sql
 ├── scripts/dart/            # Development utilities
@@ -152,24 +199,24 @@ Important backend concepts include:
 
 ### Business rules enforced on the backend
 
-The Flutter UI is not trusted for authorization. Database policies/RPCs enforce rules such as:
+The Flutter UI is not trusted for authorization. Database policies and RPCs enforce rules such as:
 
-- Passenger accounts cannot act as Drivers.
+- Passenger accounts cannot perform Driver operations.
 - Driver accounts cannot request Passenger rides.
 - A Driver must be approved before going online.
-- Dispatch only considers approved, online, available Drivers in the requested category.
+- Dispatch only considers approved, online and available Drivers in the requested category.
 - QR rides require a Driver payment QR.
-- Only the Passenger who completed and paid for a ride can rate that Driver.
+- Only the Passenger from a completed, paid ride can rate that Driver.
 - A ride can be rated only once.
-- Driver average ratings are derived from completed-ride ratings.
+- Driver averages are derived from actual ride ratings.
 
 ## Maps, routing and location
 
-Drivo intentionally avoids Google Maps billing for this portfolio build:
+Drivo uses:
 
 - **Map tiles:** OpenStreetMap via `flutter_map`
-- **Place search:** Nominatim through `places-search`
-- **Routing:** OSRM through `route`
+- **Place search:** Nominatim through the `places-search` Edge Function
+- **Routing:** OSRM through the `route` Edge Function
 - **Spatial queries:** PostGIS
 - **Device GPS:** `geolocator`
 
@@ -177,7 +224,7 @@ While a Driver is online and the app is active, location updates are written to 
 
 ### Known location limitation
 
-Production-grade background location tracking is not yet implemented. If the Driver app is killed or heavily background-restricted by the OS, continuous tracking is not guaranteed. Smooth marker interpolation is also a future polish item.
+Production-grade background Driver location tracking is not yet implemented. If the Driver app is killed or heavily background-restricted by the OS, continuous tracking is not guaranteed. Smooth marker interpolation is also future work.
 
 ## Payments
 
@@ -186,13 +233,11 @@ Drivo currently supports two portfolio payment paths:
 - **Cash** — marked paid when the Driver completes the trip.
 - **Online QR** — the Driver uploads a QR image; the Passenger can use it after the trip and confirms payment in Drivo.
 
-This is a workflow simulation, not a real payment-gateway integration. No banking credentials or payment-provider secrets are stored by the project.
+This is a workflow simulation rather than a payment-gateway integration. No banking credentials or payment-provider secrets are stored by the project.
 
 ## Driver ratings
 
-Driver ratings are tied to individual rides.
-
-A rating is accepted only when:
+Driver ratings are linked to individual rides. A rating is accepted only when:
 
 1. the caller is the ride's Passenger,
 2. the ride is completed,
@@ -200,7 +245,7 @@ A rating is accepted only when:
 4. the ride has not already been rated,
 5. the rating is between 1 and 5 stars.
 
-The Driver's displayed average and rating count are recalculated from actual rated trips.
+The Driver's displayed average and rating count are recalculated from rated trips.
 
 ## Requirements
 
@@ -208,19 +253,17 @@ The Driver's displayed average and rating count are recalculated from actual rat
 - Android Studio / Android SDK for Android development
 - Xcode for iOS development
 - A Supabase project for backend hosting
-- Supabase CLI if running the backend locally
+- Supabase CLI for local backend development
 
 ## Run the Flutter app
 
 ```bash
-git clone <https://github.com/abhishekldev07/Drivo>
+git clone https://github.com/abhishekldev07/Drivo.git
 cd Drivo/flutter
 flutter pub get
 flutter analyze
 flutter run
 ```
-
-The current source includes a public Supabase project URL/publishable key fallback for the portfolio backend. A Supabase **publishable key is client-side by design**, but never place a service-role/secret key in the Flutter app.
 
 To point the app at another Supabase project, override the compile-time values:
 
@@ -230,9 +273,11 @@ flutter run \
   --dart-define=SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
 ```
 
+Never put a Supabase service-role key or another server secret inside the Flutter app.
+
 ## Supabase development
 
-Install the Supabase CLI, then from the repository root:
+From the repository root:
 
 ```bash
 supabase start
@@ -241,35 +286,29 @@ supabase db reset
 
 The migrations under `supabase/migrations/` define the backend schema and security model.
 
-Edge Functions can be served locally with the Supabase CLI as needed.
-
 ## Driver approval workflow
 
-The portfolio build does not include a separate admin dashboard yet.
-
 1. Register a Driver account in the app.
-2. Complete all requested Driver/vehicle documents.
+2. Complete the requested personal, vehicle and document information.
 3. Open Supabase Dashboard.
 4. Review the row in `driver_applications` and the private Storage documents.
 5. Set the application status to `approved` or `rejected`.
-6. Approved Drivers receive access to the Driver portal.
+6. Approved Drivers receive access to the operational Driver portal.
 
 ## Security notes
 
 - RLS is enabled on exposed application tables.
 - Private Driver documents and payment QR files use Supabase Storage policies.
 - Privileged marketplace operations run through validated RPCs using `auth.uid()` ownership checks.
-- The Flutter app uses only a publishable Supabase key.
+- The Flutter app uses only a client-side Supabase publishable key.
 - Service-role keys, provider secrets, signing keys and local environment files must never be committed.
 - The repository `.gitignore` excludes common local credentials, build output and Supabase local state.
 
-### Important portfolio limitation
+### Important authentication limitation
 
-The phone-only sign-in/handoff mechanism is intentionally insecure compared with real authentication because possession of the phone number is not verified. Before any real launch, replace this with verified OTP/authentication and review the account-handoff RPC accordingly.
+The current phone-only sign-in/handoff mechanism does not verify possession of the entered number. Before a real launch, replace it with verified authentication and review the account-handoff flow accordingly.
 
 ## Testing checklist
-
-Before presenting or publishing a new build, verify at minimum:
 
 ```bash
 cd flutter
@@ -279,22 +318,7 @@ flutter analyze
 flutter test
 ```
 
-Recommended manual end-to-end checks:
-
-- Passenger registration and login
-- Driver registration and approval
-- duplicate-phone protection
-- Driver online/offline
-- category matching
-- request accept/reject
-- live location movement
-- complete trip lifecycle
-- Cash payment
-- QR payment
-- Passenger ride history
-- Driver trip/earnings history
-- Driver rating submission
-- logout/login with active ride restoration
+Recommended manual checks include Passenger and Driver registration, duplicate-phone protection, Driver approval, online/offline presence, category matching, accept/reject, realtime location movement, full trip lifecycle, Cash/QR payments, trip history, Driver earnings and ratings.
 
 ## GitHub hygiene
 
@@ -304,36 +328,30 @@ Before pushing:
 git status
 ```
 
-Confirm that you are **not** committing:
+Do not commit:
 
 - `flutter/android/local.properties`
 - `.env` files
 - Supabase `.temp/` or `.branches/`
 - signing keys / keystores
 - service-role or secret keys
-- build output (`build/`, APK/AAB/IPA files)
+- build output such as `build/`, APK, AAB or IPA files
 
-`pubspec.lock` should stay committed for this application repository to keep dependency resolution reproducible.
+`pubspec.lock` should remain committed for reproducible application builds.
 
-## Roadmap / production gaps
+## Roadmap
 
-Potential future work:
-
-- verified phone authentication / OTP
+- verified phone authentication / OTP for a production release
 - background Driver location service
-- push notifications for ride offers/status changes
+- push notifications for ride offers and status changes
 - smooth car-marker interpolation
-- real payment gateway integration
+- real payment-gateway integration
 - dedicated admin/operations dashboard
-- real government/document verification integrations
-- Passenger-to-Driver support/chat flows
+- government/document verification integrations
+- Passenger/Driver support or chat flows
 - automated integration tests and CI
 - Play Store / App Store deployment hardening
 
 ## Project status
 
-Drivo is a **portfolio/demo product**, not a production transportation service. It is designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and a polished mobile UX.
-
-## License
-
-No open-source license is included. Unless a license is added by the repository owner, the source code is not granted for redistribution or commercial reuse.
+Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
