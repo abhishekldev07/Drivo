@@ -27,81 +27,112 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
 
 ## App screenshots
 
+Screenshots are shown as compact thumbnails. Click any image to open the full-size version.
+
 ### Onboarding & account registration
 
-<details>
-<summary>Registration flow screenshots</summary>
+<details open>
+<summary><strong>Registration flow</strong></summary>
 <br/>
-<img  alt="App opening" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/app open.jpg" />
-    <br/><br/>
-    <img  alt="Choose driver or passenger" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/choose.jpg" />
-    <br/><br/>
-    <img  alt="Pasenger registering" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/passenger registration.jpg" />
-    <br/><br/>
-    <img  alt="Driver registering" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/driver registration.jpg" />
-    <br/><br/>
-    <img  alt="Driver's application" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/driver application.jpg" />
-
+<table>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/registration%20flow/app%20open.jpg"><img src="docs/screenshots/registration%20flow/app%20open.jpg" alt="Phone sign-in" width="190" /></a><br/>
+      <sub><b>Phone sign-in</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/registration%20flow/choose.jpg"><img src="docs/screenshots/registration%20flow/choose.jpg" alt="Account type selection" width="190" /></a><br/>
+      <sub><b>Account type</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/registration%20flow/passenger%20registration.jpg"><img src="docs/screenshots/registration%20flow/passenger%20registration.jpg" alt="Passenger registration" width="190" /></a><br/>
+      <sub><b>Passenger registration</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/registration%20flow/driver%20registration.jpg"><img src="docs/screenshots/registration%20flow/driver%20registration.jpg" alt="Driver registration" width="190" /></a><br/>
+      <sub><b>Driver registration</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/registration%20flow/driver%20application.jpg"><img src="docs/screenshots/registration%20flow/driver%20application.jpg" alt="Driver application under review" width="190" /></a><br/>
+      <sub><b>Application review</b></sub>
+    </td>
+    <td></td>
+  </tr>
+</table>
 </details>
 
 ### Passenger flow
 
-<details>
-<summary>Passenger flow screenshots</summary>
+<details open>
+<summary><strong>Passenger experience</strong></summary>
 <br/>
-<img  alt="Passenger destination" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/passenger destination.jpg" />
-    <br/><br/>
-    <img  alt="Passenger choosing ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/choose ride.jpg" />
-    <br/><br/>
-    <img  alt="Driver fixed" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/found driver.jpg" />
-    <br/><br/>
-    <img  alt="Trip completed" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/trip complete.jpg" />
-    <br/><br/>
-    <img  alt="Rate ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/rate ride.jpg" />
-    <br/><br/>
-    <img  alt="Rate ride" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/passenger profile.jpg" />
-
+<table>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/passenger%20destination.jpg"><img src="docs/screenshots/passenger%20flow/passenger%20destination.jpg" alt="Destination map" width="190" /></a><br/>
+      <sub><b>Destination map</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/choose%20ride.jpg"><img src="docs/screenshots/passenger%20flow/choose%20ride.jpg" alt="Ride and payment selection" width="190" /></a><br/>
+      <sub><b>Ride & payment</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/found%20driver.jpg"><img src="docs/screenshots/passenger%20flow/found%20driver.jpg" alt="Assigned Driver" width="190" /></a><br/>
+      <sub><b>Assigned Driver</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/trip%20complete.jpg"><img src="docs/screenshots/passenger%20flow/trip%20complete.jpg" alt="Trip complete" width="190" /></a><br/>
+      <sub><b>Trip complete</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/rate%20ride.jpg"><img src="docs/screenshots/passenger%20flow/rate%20ride.jpg" alt="Driver rating" width="190" /></a><br/>
+      <sub><b>Driver rating</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/passenger%20flow/passenger%20profile.jpg"><img src="docs/screenshots/passenger%20flow/passenger%20profile.jpg" alt="Passenger profile and trip history" width="190" /></a><br/>
+      <sub><b>Profile & trip history</b></sub>
+    </td>
+  </tr>
+</table>
 </details>
 
 ### Driver flow
 
-<details>
-<summary>Driver flow screenshots</summary>
+<details open>
+<summary><strong>Driver experience</strong></summary>
 <br/>
-<img  alt="Passenger request accept/cancel" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver accept.jpg" />
-    <br/><br/>
-    <img  alt="Driver trip" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver trip.jpg" />
-    <br/><br/>
-    <img  alt="Driver earnings" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver earnings.jpg" />
-    <br/><br/>
-    <img  alt="Driver's feedback" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver feedback.jpg" />
-    <br/><br/>
-    <img  alt="Driver's profile" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver profile.jpg" />
-
+<table>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/driver%20flow/driver%20accept.jpg"><img src="docs/screenshots/driver%20flow/driver%20accept.jpg" alt="Incoming ride request" width="190" /></a><br/>
+      <sub><b>Incoming request</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/driver%20flow/driver%20trip.jpg"><img src="docs/screenshots/driver%20flow/driver%20trip.jpg" alt="Driver trip history" width="190" /></a><br/>
+      <sub><b>Trip history</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/driver%20flow/driver%20earnings.jpg"><img src="docs/screenshots/driver%20flow/driver%20earnings.jpg" alt="Driver earnings" width="190" /></a><br/>
+      <sub><b>Earnings</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="docs/screenshots/driver%20flow/driver%20feedback.jpg"><img src="docs/screenshots/driver%20flow/driver%20feedback.jpg" alt="Ratings and feedback" width="190" /></a><br/>
+      <sub><b>Ratings & feedback</b></sub>
+    </td>
+    <td align="center">
+      <a href="docs/screenshots/driver%20flow/driver%20profile.jpg"><img src="docs/screenshots/driver%20flow/driver%20profile.jpg" alt="Verified Driver profile" width="190" /></a><br/>
+      <sub><b>Verified Driver profile</b></sub>
+    </td>
+    <td></td>
+  </tr>
+</table>
 </details>
-
-**Screens shown:** Phone sign-in • Account type selection • Passenger registration • Driver registration — license step • Driver application under review
-
-### Screen inventory
-
-| Area | Screen |
-| --- | --- |
-| Account | Phone sign-in |
-| Account | Account type selection |
-| Passenger | Passenger registration |
-| Passenger | Destination map |
-| Passenger | Ride & payment selection |
-| Passenger | Assigned Driver / Driver arrived |
-| Passenger | Trip complete |
-| Passenger | Driver rating |
-| Passenger | Passenger trip history |
-| Driver | Driver registration — license step |
-| Driver | Driver application under review |
-| Driver | Incoming ride request |
-| Driver | Driver earnings |
-| Driver | Driver trip history |
-| Driver | Ratings & feedback |
-| Driver | Verified Driver profile |
 
 ## Current feature set
 
@@ -361,12 +392,8 @@ Do not commit:
 
 ## Project status
 
-<<<<<<< HEAD
-Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
-=======
 Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
 
 ## License
 
 No open-source license is included. Unless a license is added by the repository owner, the source code is not granted for redistribution or commercial reuse.
->>>>>>> e66f3b019e25f6c9c276be8ca2c87f3c21974e95
