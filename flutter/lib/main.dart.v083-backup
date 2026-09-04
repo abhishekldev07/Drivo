@@ -602,38 +602,11 @@ class _DrivoRootState extends State<DrivoRoot> {
       if (supabase.auth.currentSession == null) {
         await supabase.auth.signInAnonymously();
       }
-
-      final user = supabase.auth.currentUser;
-      if (user == null) {
+      if (supabase.auth.currentUser == null) {
         throw Exception('Could not create a Drivo session');
       }
-
-      final rows = await supabase
-          .from('profiles')
-          .select('id, display_name, phone, account_type, profile_photo_path')
-          .eq('id', user.id)
-          .limit(1);
-
       if (!mounted) return;
-
-      if (rows.isNotEmpty) {
-        final profile = DrivoProfile.fromJson(
-          Map<String, dynamic>.from(rows.first),
-        );
-        setState(() {
-          _profile = profile;
-          _pendingPhone = null;
-          _phoneResolved = true;
-          _loading = false;
-        });
-      } else {
-        setState(() {
-          _profile = null;
-          _pendingPhone = null;
-          _phoneResolved = false;
-          _loading = false;
-        });
-      }
+      setState(() => _loading = false);
     } catch (error) {
       if (!mounted) return;
       setState(() {
