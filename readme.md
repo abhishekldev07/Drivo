@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="flutter/assets/branding/drivo_logo.png" alt="Drivo" width="260" />
+  <img src="flutter/assets/branding/drivo.png" alt="Drivo" width="260" />
 </p>
 
 <h1 align="center">Drivo</h1>
@@ -29,11 +29,10 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
 
 ### Onboarding & account registration
 
-<<<<<<< HEAD
 <details>
-<summary>Screenshots</summary>
+<summary>Registration flow screenshots</summary>
 <br/>
-<img  alt="App opening" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/open app.jpg" />
+<img  alt="App opening" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/app open.jpg" />
     <br/><br/>
     <img  alt="Choose driver or passenger" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/registration flow/choose.jpg" />
     <br/><br/>
@@ -48,7 +47,7 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
 ### Passenger flow
 
 <details>
-<summary>Screenshots</summary>
+<summary>Passenger flow screenshots</summary>
 <br/>
 <img  alt="Passenger destination" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/passenger flow/passenger destination.jpg" />
     <br/><br/>
@@ -66,6 +65,9 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
 
 ### Driver flow
 
+<details>
+<summary>Driver flow screenshots</summary>
+<br/>
 <img  alt="Passenger request accept/cancel" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver accept.jpg" />
     <br/><br/>
     <img  alt="Driver trip" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver trip.jpg" />
@@ -75,29 +77,10 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
     <img  alt="Driver's feedback" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver feedback.jpg" />
     <br/><br/>
     <img  alt="Driver's profile" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver profile.jpg" />
-=======
+
+</details>
+
 **Screens shown:** Phone sign-in • Account type selection • Passenger registration • Driver registration — license step • Driver application under review
-
-<p align="center">
-  <img src="docs/screenshots/onboarding-gallery.jpg" alt="Drivo onboarding and account registration screens" width="900" />
-</p>
-
-### Passenger flow
-
-**Screens shown:** Destination map • Ride & payment selection • Assigned Driver / Driver arrived • Trip complete • Driver rating • Passenger trip history
-
-<p align="center">
-  <img src="docs/screenshots/passenger-gallery.jpg" alt="Drivo Passenger destination, booking, tracking, trip completion, rating and history screens" width="900" />
-</p>
-
-### Driver flow
-
-**Screens shown:** Incoming ride request • Driver earnings • Driver trip history • Ratings & feedback • Verified Driver profile
-
-<p align="center">
-  <img src="docs/screenshots/driver-gallery.jpg" alt="Drivo Driver request, earnings, trip history, ratings and profile screens" width="900" />
-</p>
->>>>>>> e66f3b019e25f6c9c276be8ca2c87f3c21974e95
 
 ### Screen inventory
 
