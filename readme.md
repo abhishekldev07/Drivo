@@ -29,6 +29,7 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
 
 ### Onboarding & account registration
 
+<<<<<<< HEAD
 <details>
 <summary>Screenshots</summary>
 <br/>
@@ -74,6 +75,29 @@ The backend uses Supabase with Postgres/PostGIS, Row Level Security, Realtime su
     <img  alt="Driver's feedback" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver feedback.jpg" />
     <br/><br/>
     <img  alt="Driver's profile" src="https://github.com/abhishekldev07/Drivo/blob/main/docs/screenshots/driver flow/driver profile.jpg" />
+=======
+**Screens shown:** Phone sign-in • Account type selection • Passenger registration • Driver registration — license step • Driver application under review
+
+<p align="center">
+  <img src="docs/screenshots/onboarding-gallery.jpg" alt="Drivo onboarding and account registration screens" width="900" />
+</p>
+
+### Passenger flow
+
+**Screens shown:** Destination map • Ride & payment selection • Assigned Driver / Driver arrived • Trip complete • Driver rating • Passenger trip history
+
+<p align="center">
+  <img src="docs/screenshots/passenger-gallery.jpg" alt="Drivo Passenger destination, booking, tracking, trip completion, rating and history screens" width="900" />
+</p>
+
+### Driver flow
+
+**Screens shown:** Incoming ride request • Driver earnings • Driver trip history • Ratings & feedback • Verified Driver profile
+
+<p align="center">
+  <img src="docs/screenshots/driver-gallery.jpg" alt="Drivo Driver request, earnings, trip history, ratings and profile screens" width="900" />
+</p>
+>>>>>>> e66f3b019e25f6c9c276be8ca2c87f3c21974e95
 
 ### Screen inventory
 
@@ -354,4 +378,12 @@ Do not commit:
 
 ## Project status
 
+<<<<<<< HEAD
 Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
+=======
+Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
+
+## License
+
+No open-source license is included. Unless a license is added by the repository owner, the source code is not granted for redistribution or commercial reuse.
+>>>>>>> e66f3b019e25f6c9c276be8ca2c87f3c21974e95
