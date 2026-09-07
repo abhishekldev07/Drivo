@@ -1,0 +1,57 @@
+name: Apply passenger map attribution fix
+
+on:
+  push:
+    branches:
+      - fix-passenger-map-attribution
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Replace passenger attribution strip
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('flutter/lib/main.dart')
+          text = path.read_text()
+          old = """                const SimpleAttributionWidget(
+                  source: Text('OpenStreetMap contributors'),
+                  alignment: Alignment.topRight,
+                ),
+"""
+          new = """                const RichAttributionWidget(
+                  attributions: [
+                    TextSourceAttribution('OpenStreetMap contributors'),
+                  ],
+                  showFlutterMapAttribution: false,
+                ),
+"""
+
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'Expected exactly one passenger attribution block, found {count}.')
+
+          path.write_text(text.replace(old, new, 1))
+          PY
+
+      - name: Remove temporary workflow
+        run: rm .github/workflows/fix-passenger-map-attribution.yml
+
+      - name: Commit source fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flutter/lib/main.dart .github/workflows/fix-passenger-map-attribution.yml
+          git commit -m "fix: clean passenger map attribution"
+          git push origin HEAD:fix-passenger-map-attribution
