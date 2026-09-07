@@ -2388,9 +2388,11 @@ class _DrivoPassengerScreenState extends State<DrivoPassengerScreen> {
                   ],
                 ),
                 MarkerLayer(markers: _buildMarkers()),
-                const SimpleAttributionWidget(
-                  source: Text('OpenStreetMap contributors'),
-                  alignment: Alignment.topRight,
+                const RichAttributionWidget(
+                  attributions: [
+                    TextSourceAttribution('OpenStreetMap contributors'),
+                  ],
+                  showFlutterMapAttribution: false,
                 ),
               ],
             ),
