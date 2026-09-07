@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   patch:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -22,36 +21,27 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-
           path = Path('flutter/lib/main.dart')
           text = path.read_text()
-          old = """                const SimpleAttributionWidget(
-                  source: Text('OpenStreetMap contributors'),
-                  alignment: Alignment.topRight,
-                ),
-"""
-          new = """                const RichAttributionWidget(
-                  attributions: [
-                    TextSourceAttribution('OpenStreetMap contributors'),
-                  ],
-                  showFlutterMapAttribution: false,
-                ),
-"""
-
+          old = "                const SimpleAttributionWidget(\n                  source: Text('OpenStreetMap contributors'),\n                  alignment: Alignment.topRight,\n                ),\n"
+          new = "                const RichAttributionWidget(\n                  attributions: [\n                    TextSourceAttribution('OpenStreetMap contributors'),\n                  ],\n                  showFlutterMapAttribution: false,\n                ),\n"
           count = text.count(old)
-          if count != 1:
-              raise SystemExit(f'Expected exactly one passenger attribution block, found {count}.')
-
-          path.write_text(text.replace(old, new, 1))
+          if count == 0:
+              print('Passenger attribution block is already patched; nothing to do.')
+          elif count == 1:
+              path.write_text(text.replace(old, new, 1))
+          else:
+              raise SystemExit(f'Expected at most one passenger attribution block, found {count}.')
           PY
 
-      - name: Remove temporary workflow
-        run: rm .github/workflows/fix-passenger-map-attribution.yml
-
-      - name: Commit source fix
+      - name: Commit source fix if needed
         run: |
+          if git diff --quiet -- flutter/lib/main.dart; then
+            echo "No source change needed."
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add flutter/lib/main.dart .github/workflows/fix-passenger-map-attribution.yml
+          git add flutter/lib/main.dart
           git commit -m "fix: clean passenger map attribution"
           git push origin HEAD:fix-passenger-map-attribution
