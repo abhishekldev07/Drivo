@@ -392,7 +392,7 @@ Do not commit:
 
 ## Project status
 
-Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role-based workflows and polished mobile UX.
+Drivo is a portfolio/demo product designed to demonstrate marketplace architecture, realtime state, geospatial dispatch, role based workflows and polished mobile UX.
 
 ## License
 
